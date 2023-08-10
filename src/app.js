@@ -12,4 +12,13 @@ app.get('/restaurants', async (req, res) => {
 	}
 })
 
+app.get('/restaurants/:id', async (req, res) => {
+	try {
+		const data = await Restaurant.findByPk(req.params.id)
+		res.json(data)
+	} catch (err) {
+		console.error(err)
+	}
+})
+
 module.exports = app
